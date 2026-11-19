@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asynchrone - Application | Circle Diagram of the Asynchronous Machine</title>
+  <link rel="stylesheet" href="../styles/application.css">
+  <link rel="icon" type="image/x-icon" href="../logos/A.svg">
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+</head>
+
+<body>
+  <header class="main-header">
+    <a href="../index.html" class="nav-logo">
+      <img src="../logos/Asynchrone.svg" alt="Asynchrone" class="nav-logo">
+    </a>
+    <nav class="main-nav">
+      <a href="../index.html" class="nav-link">
+        <img src="../logos/home.svg" alt="Accueil" class="nav-icon">
+        <span>Home</span>
+      </a>
+      <a href="theory.html" class="nav-link">
+        <img src="../logos/theory.svg" alt="Théorie" class="nav-icon">
+        <span>Theory</span>
+      </a>
+      <a href="application.html" class="nav-link active">
+        <img src="../logos/application.svg" alt="Application" class="nav-icon">
+        <span>Application</span>
+      </a>
+    </nav>
+  </header>
+
+  <main>
+
+
+    <h2>Guide to Using the Asynchronous Machine Circle Diagram Application</h2>
+    <p class="explanation">
+      This section provides a comprehensive and structured explanation of how to use the induction machine analysis tool
+      from start to finish. It guides the user through entering accurate experimental test data, launching the
+      calculation process, and understanding how the system processes these inputs.<br><br> It also clarifies how the
+      generated circle diagram reflects the machine’s operating behavior and how key parameters such as slip,
+      efficiency, power factor, and power distribution are derived. By following these steps carefully, users can ensure
+      reliable results and gain deeper insight into the machine’s performance under different operating conditions.
+    </p>
+    <section id="steps">
+      <div class="steps-wrapper">
+        <div class="steps-container">
+          <input class="input-step" type="radio" name="slide" id="c1">
+          <label for="c1" class="step">
+            <div class="row">
+              <div class="step-number">
+                <p>01</p>
+              </div>
+              <div class="description">
+                <h4>Fill the Fields</h4>
+                <p>Enter precise machine tests results in the input fields.</p>
+              </div>
+            </div>
+          </label>
+          <input class="input-step" type="radio" name="slide" id="c2">
+          <label for="c2" class="step">
+            <div class="row">
+              <div class="step-number">
+                <p>02</p>
+              </div>
+              <div class="description">
+                <h4>Click the Button</h4>
+                <p>Click "Calculate" to process inputs and generate diagrams and calculations.</p>
+              </div>
+            </div>
+          </label>
+          <input class="input-step" type="radio" name="slide" id="c3" checked>
+          <label for="c3" class="step">
+            <div class="row">
+              <div class="step-number">
+                <p>03</p>
+              </div>
+              <div class="description">
+                <h4>View Diagram</h4>
+                <p>View circle diagram and analyze slip, efficiency, power factor.</p>
+              </div>
+            </div>
+          </label>
+          <input class="input-step" type="radio" name="slide" id="c4">
+          <label for="c4" class="step">
+            <div class="row">
+              <div class="step-number">
+                <p>04</p>
+              </div>
+              <div class="description">
+                <h4>View Calculations</h4>
+                <p>View calculations and analyze slip, efficiency, power factor.</p>
+              </div>
+            </div>
+          </label>
+        </div>
+      </div>
+    </section>
+
+    <h2>Comprehensive Input, Visualization, and Performance Analysis of the Asynchronous Machine</h2>
+    <p class="explanation">
+      This section brings together all the essential stages required for a complete and rigorous analysis of the
+      asynchronous induction machine. It starts with the entry of nameplate data and experimental test results,
+      including no-load, blocked-rotor, and stator resistance measurements, which form the foundation of the electrical
+      model.<br><br> Once the data is entered, the tool generates the circle diagram and a set of characteristic curves
+      that illustrate the machine’s behavior over a wide operating range. Interactive visual elements such as zoomable
+      diagrams and performance gauges help the user intuitively identify the operating point in terms of current, power,
+      torque, and speed. <br><br>Finally, detailed numerical results are presented through power balance tables and
+      electrical, mechanical, and electromagnetic parameters, allowing a clear understanding of losses, efficiency,
+      slip, and overall machine performance.
+    </p>
+
+    <div class="inputs">
+      <div class="nameplate-data">
+        <div class="card-header">
+          <img class="card-logo" src="../logos/nameplate.svg">
+          <h2 class="card-title">Machine Nameplate</h2>
+        </div>
+        <div class="label-input">
+          <label for="rated_voltage">Rated Voltage \( V_n \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( V = \)</div>
+            <input type="number" id="rated_voltage" name="rated_voltage" value="380">
+            <div class="fixed-part-2">\( \text{V} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="rated_current">Rated Current \( I_n \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( I = \)</div>
+            <input type="number" id="rated_current" name="rated_current" value="10">
+            <div class="fixed-part-2">\( \text{A} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="rated_power">Rated Power \( P_n \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( P = \)</div>
+            <input type="number" id="rated_power" name="rated_power" value="5">
+            <div class="fixed-part-2">\( \text{kW} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="winding_connection">Winding Connection :</label>
+          <div>
+            <select id="winding_connection" name="winding_connection">
+              <option value="star" selected>Star connected</option>
+              <option value="delta">Delta connected</option>
+            </select>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="rated_frequency">Rated Frequency \( f_n \) :</label>
+          <div>
+            <select id="rated_frequency" name="rated_frequency">
+              <option value="50" selected>50 Hz</option>
+              <option value="60">60 Hz</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="label-input">
+          <label for="rated_speed">Rated Speed \( N \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( N = \)</div>
+            <input type="number" id="rated_speed" name="rated_speed" value="1400">
+            <div class="fixed-part-2">\( \text{rpm} \)</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="no-load-inputs">
+        <div class="card-header">
+          <img class="card-logo" src="../logos/no-load.svg">
+          <h2 class="card-title">No Load Test</h2>
+        </div>
+        <div class="label-input">
+          <label for="no_load_voltage">No-Load Voltage \( V_{o} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( V = \)</div>
+            <input type="number" id="no_load_voltage" name="no_load_voltage" value="380">
+            <div class="fixed-part-2">\( \text{V} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="no_load_current">No-Load Current \( I_{o} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( I = \)</div>
+            <input type="number" id="no_load_current" name="no_load_current" value="3.2">
+            <div class="fixed-part-2">\( \text{A} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="no_load_power">No-Load Power \( P_{o} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( P = \)</div>
+            <input type="number" id="no_load_power" name="no_load_power" value="0.35">
+            <div class="fixed-part-2">\( \text{kW} \)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="blocked-rotor-inputs">
+        <div class="card-header">
+          <img class="card-logo" src="../logos/rotor.svg">
+          <h2 class="card-title">Blocked Rotor Test</h2>
+        </div>
+        <div class="label-input">
+          <label for="blockedRotorVoltage">Blocked Rotor Voltage \( V_{sc} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( V = \)</div>
+            <input type="number" id="blockedRotorVoltage" name="blockedRotorVoltage" value="100">
+            <div class="fixed-part-2">\( \text{V} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="lockedRotorCurrent">Blocked Rotor Current \( I_{sc} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( I = \)</div>
+            <input type="number" id="lockedRotorCurrent" name="lockedRotorCurrent" value="13">
+            <div class="fixed-part-2">\( \text{A} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="blockedRotorPower">Blocked Rotor Power \( P_{sc} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( P = \)</div>
+            <input type="number" id="blockedRotorPower" name="blockedRotorPower" value="0.8">
+            <div class="fixed-part-2">\( \text{kW} \)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="Stator-resistance-inputs">
+        <div class="card-header">
+          <img class="card-logo" src="../logos/resistor.svg">
+          <h2 class="card-title">Resistances</h2>
+        </div>
+        <div class="label-input">
+          <label for="statorResistance">Stator Resistance \( R_s \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( R_s = \)</div>
+            <input type="number" id="statorResistance" name="statorResistance" value="0.5">
+            <div class="fixed-part-2">\( \Omega \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="rotorResistanceInput">Rotor Resistance \( R'_r \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( R'_r = \)</div>
+            <input type="number" id="rotorResistanceInput" name="rotorResistanceInput" value="0.2">
+            <div class="fixed-part-2">\( \Omega \)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Draw Button -->
+    <div class="draw-button-container">
+      <button id="drawButton" class="draw-button">
+        <img src="../logos/chart.svg" alt="" class="draw-icon">
+        <span class="draw-label">Draw the Circle Diagram</span>
+      </button>
+    </div>
+
+    <!-- Circle Diagram Canvas -->
+    <div class="plotting" style="position: relative; display: flex; align-items: center; justify-content: center;">
+      <canvas id="circleDiagramCanvas"></canvas>
+
+      <!-- Zoom Controls -->
+      <div id="zoomControls"
+        style="position: absolute; top: 20px; right: 20px; display: flex; flex-direction: column; gap: 10px; background: rgba(255,255,255,0.95); padding: 12px; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.15);">
+        <button id="zoomInBtn"
+          style="padding: 10px; cursor: pointer; border: 1px solid #ddd; background: white; border-radius: 8px; font-size: 18px;"
+          title="Zoom In">➕</button>
+        <button id="zoomOutBtn"
+          style="padding: 10px; cursor: pointer; border: 1px solid #ddd; background: white; border-radius: 8px; font-size: 18px;"
+          title="Zoom Out">➖</button>
+        <button id="toggleSlipSegmentBtn"
+          style="padding: 10px; cursor: pointer; border: 1px solid #ddd; background: #111; color: #fff; border-radius: 8px; font-size: 14px;"
+          title="Hide/Show Slip Segment">👁‍🗨 Slip</button>
+        <button id="toggleLegendBtn"
+          style="padding: 10px; cursor: pointer; border: 1px solid #ddd; background: #111; color: #fff; border-radius: 8px; font-size: 14px;"
+          title="Hide/Show Legend">👁‍🗨 Legend</button>
+      </div>
+
+      <!-- Characteristic Point Shortcuts -->
+      <div class="point-shortcuts" id="pointShortcuts">
+        <div class="point-shortcuts__label">Operating points </div>
+        <button class="point-shortcut" data-point-target="noLoad">No Load</button>
+        <button class="point-shortcut" data-point-target="nominal">Nominal point</button>
+        <button class="point-shortcut" data-point-target="maxTorque">Maximum torque</button>
+        <button class="point-shortcut" data-point-target="lockedRotor">Locked rotor</button>
+      </div>
+    </div>
+
+    <!-- Characteristic Curves -->
+
+    <h2>Performance Characteristics and Operating Curves</h2>
+    <p class="explanation">
+      This section presents the main performance characteristics of the asynchronous machine through a set of graphical
+      curves.<br> These plots illustrate the relationships between torque, speed, slip, current, power factor, and
+      efficiency. By analyzing these curves, it becomes possible to better understand the machine’s behavior under
+      different operating conditions, identify characteristic operating points, and evaluate key performance indicators
+      such as efficiency, power factor, and current consumption.
+    </p>
+
+
+    <div class="curves-section" style="margin-top: 50px;">
+
+
+      <div class="curves-grid"
+        style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px; margin-bottom: 50px;">
+        <div class="curve-container"
+          style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+          <canvas id="graph-torque-speed" style="width: 100%; height: 300px;"></canvas>
+        </div>
+        <div class="curve-container"
+          style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+          <canvas id="graph-torque-slip" style="width: 100%; height: 300px;"></canvas>
+        </div>
+        <div class="curve-container"
+          style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+          <canvas id="graph-current-slip" style="width: 100%; height: 300px;"></canvas>
+        </div>
+        <div class="curve-container"
+          style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+          <canvas id="graph-current-power" style="width: 100%; height: 300px;"></canvas>
+        </div>
+        <div class="curve-container"
+          style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+          <canvas id="graph-pf-power" style="width: 100%; height: 300px;"></canvas>
+        </div>
+        <div class="curve-container"
+          style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);">
+          <canvas id="graph-pf-slip" style="width: 100%; height: 300px;"></canvas>
+        </div>
+        <div class="curve-container"
+          style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); grid-column: span 2;">
+          <canvas id="graph-efficiency-slip" style="width: 100%; height: 300px;"></canvas>
+        </div>
+
+
+      </div>
+    </div>
+
+    <h2>Point Determination with Load Torque</h2>
+    <p class="explanation">
+      This section allows the user to define a load torque law as a function of the rotational speed N. The entered
+      expression is validated to accept only numerical values, the variable N, and the + or − operators. <br>The load
+      torque curve is then plotted on the same graph as the machine useful torque characteristic.<br> The operating
+      point is automatically determined as the intersection of the two curves. The corresponding slip is calculated
+      from the intersection speed and the synchronous speed, and the resulting operating point is finally plotted on
+      the circle diagram.
+    </p>
+    <div class="curve-container"
+      style="background: white; border-radius: 20px; padding: 20px; box-shadow: 0 4px 12px rgba(0,0,0,0.08); grid-column: span 2;">
+      <div style="width: 100%; height: 500px;">
+        <canvas id="graph-useful-torque-slip"></canvas>
+      </div>
+      <div style="margin-top: 25px; display: flex; gap: 15px; align-items: center;">
+        <label for="resistiveTorqueInput"
+          style="font-weight: bold; color: #333; font-family: 'Satoshi-Bold'; white-space: nowrap;">Load Torque Tr(N) =
+        </label>
+        <input type="text" id="resistiveTorqueInput" placeholder="Ex: 0.005*N + 1"
+          style="height: 50px; border-radius: 55px; border: 1px solid #ddd; padding: 0 20px; font-family: 'Satoshi-Bold'; font-size: 16px; flex-grow: 1; box-shadow: inset 0 2px 4px rgba(0,0,0,0.05);">
+        <button id="plotResistiveTorqueBtn" class="draw-button"
+          style="min-width: auto; padding: 0 30px; height: 50px; font-size: 16px;">Plot & Operating Point</button>
+      </div>
+      <div id="resistiveTorqueError" style="color: red; font-size: 13px; margin-top: 5px; min-height: 20px;"></div>
+    </div>
+
+    <!-- Motor Usage Dashboard - Circular Gauges -->
+
+    <h2>Motor Operating Dashboard</h2>
+    <p class="explanation">
+      The dashboard provides a real-time visualization of the asynchronous machine operating point using circular
+      gauges. Each indicator represents a normalized quantity—current, power, torque, and speed—expressed with respect
+      to its rated value.<br> This visual approach makes it easier to assess the machine loading level, compare
+      operating conditions, and quickly identify deviations from nominal or critical states.
+    </p>
+
+    <div class="motor-dashboard" id="motorDashboard"
+      style="display: none; margin: 40px auto; max-width: 1200px; padding: 0 20px;">
+      <div class="dashboard-grid" style="display: grid; grid-template-columns: repeat(4, 1fr); gap: 30px;">
+        <!-- Current Gauge -->
+        <div class="gauge-card">
+          <div class="gauge-container">
+            <svg viewBox="0 0 100 100">
+              <defs>
+                <linearGradient id="gauge-red-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stop-color="#F6192B"></stop>
+                  <stop offset="100%" stop-color="#FE6743"></stop>
+                </linearGradient>
+              </defs>
+              <circle cx="50" cy="50" r="42" fill="none" stroke="#ecedf4" stroke-width="10" />
+              <circle id="gauge-current-ring" cx="50" cy="50" r="42" fill="none" stroke="url(#gauge-red-gradient)"
+                stroke-width="10" stroke-dasharray="263.89" stroke-dashoffset="263.89" stroke-linecap="round"
+                style="transition: stroke-dashoffset 0.5s ease;" />
+            </svg>
+            <div class="gauge-center">
+              <div id="dashboard-current" class="gauge-value">0%</div>
+            </div>
+          </div>
+          <div class="gauge-label">Current (I/In)</div>
+        </div>
+
+        <!-- Power Gauge -->
+        <div class="gauge-card">
+          <div class="gauge-container">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="#ecedf4" stroke-width="10" />
+              <circle id="gauge-power-ring" cx="50" cy="50" r="42" fill="none" stroke="url(#gauge-red-gradient)"
+                stroke-width="10" stroke-dasharray="263.89" stroke-dashoffset="263.89" stroke-linecap="round"
+                style="transition: stroke-dashoffset 0.5s ease;" />
+            </svg>
+            <div class="gauge-center">
+              <div id="dashboard-power" class="gauge-value">0%</div>
+            </div>
+          </div>
+          <div class="gauge-label">Power (P/Pn)</div>
+        </div>
+
+        <!-- Torque Gauge -->
+        <div class="gauge-card">
+          <div class="gauge-container">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="#ecedf4" stroke-width="10" />
+              <circle id="gauge-torque-ring" cx="50" cy="50" r="42" fill="none" stroke="url(#gauge-red-gradient)"
+                stroke-width="10" stroke-dasharray="263.89" stroke-dashoffset="263.89" stroke-linecap="round"
+                style="transition: stroke-dashoffset 0.5s ease;" />
+            </svg>
+            <div class="gauge-center">
+              <div id="dashboard-torque" class="gauge-value">0%</div>
+            </div>
+          </div>
+          <div class="gauge-label">Torque (T/Tn)</div>
+        </div>
+
+        <!-- Speed Gauge -->
+        <div class="gauge-card">
+          <div class="gauge-container">
+            <svg viewBox="0 0 100 100">
+              <circle cx="50" cy="50" r="42" fill="none" stroke="#ecedf4" stroke-width="10" />
+              <circle id="gauge-speed-ring" cx="50" cy="50" r="42" fill="none" stroke="url(#gauge-red-gradient)"
+                stroke-width="10" stroke-dasharray="263.89" stroke-dashoffset="263.89" stroke-linecap="round"
+                style="transition: stroke-dashoffset 0.5s ease;" />
+            </svg>
+            <div class="gauge-center">
+              <div id="dashboard-speed" class="gauge-value">0%</div>
+            </div>
+          </div>
+          <div class="gauge-label">Speed (n/ns)</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Results Display -->
+    <h2>Computed Results and Machine Parameters</h2>
+    <p class="explanation">
+      The results area summarizes the complete electrical and mechanical behavior of the asynchronous machine at the
+      selected operating point. It presents the detailed power balance, including stator, rotor, iron, and mechanical
+      losses, as well as the resulting useful power and efficiency.<br><br> In addition, the equivalent electrical
+      parameters, mechanical quantities, and supply-related values are displayed to provide a comprehensive and
+      structured overview of the machine’s operating conditions.
+    </p>
+    <div class="results">
+      <div class="nameplate-data">
+        <div class="card-header">
+          <img class="card-logo" src="../logos/balance.svg">
+          <h2 class="card-title">Power Balance</h2>
+        </div>
+        <div class="label-input">
+          <label for="absorbed_power">Absorbed Power \( P_{a} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( P = \)</div>
+            <div class="result-value" id="absorbed_power"></div>
+            <div class="fixed-part-2">\( \text{W} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="iron_losses">Iron Losses \( P_{iron} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( P = \)</div>
+            <div class="result-value" id="iron_losses"></div>
+            <div class="fixed-part-2">\( \text{W} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="stator_losses">Stator Joule Losses \( P_{js} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( P = \)</div>
+            <div class="result-value" id="stator_losses"></div>
+            <div class="fixed-part-2">\( \text{W} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="air_gap_power">Air Gap Power \( P_{tr} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( P = \)</div>
+            <div class="result-value" id="air_gap_power"></div>
+            <div class="fixed-part-2">\( \text{W} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="rotor_losses">Rotor Losses \( P_r \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( P = \)</div>
+            <div class="result-value" id="rotor_losses"></div>
+            <div class="fixed-part-2">\( \text{W} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="electromagnetic_power">Electromagnetic Power \( P_{em} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( P = \)</div>
+            <div class="result-value" id="electromagnetic_power"></div>
+            <div class="fixed-part-2">\( \text{W} \)</div>
+          </div>
+        </div>
+
+        <div class="label-input">
+          <label for="useful_power">Useful Power \( P_u \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( P = \)</div>
+            <div class="result-value" id="useful_power"></div>
+            <div class="fixed-part-2">\( \text{W} \)</div>
+          </div>
+        </div>
+
+        <div class="label-input">
+          <label for="efficiency">Efficiency \( \eta \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( \eta = \)</div>
+            <div class="result-value" id="efficiency"></div>
+            <div class="fixed-part-2">\( \text{%} \)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="Stator-resistance-inputs">
+        <div class="card-header">
+          <img class="card-logo" src="../logos/parameters.svg">
+          <h2 class="card-title">Machine Parameters</h2>
+        </div>
+        <div class="label-input">
+          <label for="phaseResistance">Phase Resistance \( R_s \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( R = \)</div>
+            <div class="result-value" id="phaseResistance"></div>
+            <div class="fixed-part-2">\( \Omega \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="rotorResistanceResult">Rotor Resistance \( R'_r \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( R = \)</div>
+            <div class="result-value" id="rotorResistanceResult"></div>
+            <div class="fixed-part-2">\( \Omega \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="leakageReactanceResult">Leakage Reactance \( X'_s \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( X = \)</div>
+            <div class="result-value" id="leakageReactanceResult"></div>
+            <div class="fixed-part-2">\( \Omega \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="leakageInductancePrime">Leakage Inductance \( l'_s \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( L = \)</div>
+            <div class="result-value" id="leakageInductancePrime"></div>
+            <div class="fixed-part-2">\( \text{mH} \)</div>
+          </div>
+        </div>
+
+
+        <div class="label-input">
+          <label for="magnetizingResistance">Magnetizing Resistance \( R_{s\mu} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( R = \)</div>
+            <div class="result-value" id="magnetizingResistance"></div>
+            <div class="fixed-part-2">\( \Omega \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="magnetizingReactance">Magnetizing Reactance \( X_{s\mu} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( X = \)</div>
+            <div class="result-value" id="magnetizingReactance"></div>
+            <div class="fixed-part-2">\( \Omega \)</div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="Stator-resistance-inputs">
+        <div class="card-header">
+          <img class="card-logo" src="../logos/rotor.svg">
+          <h2 class="card-title">Mechanical Parameters</h2>
+        </div>
+        <div class="label-input">
+          <label for="slip">Slip \( s \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( s = \)</div>
+            <div class="result-value" id="slip"></div>
+            <div class="fixed-part-2">\( \text{%} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="rotorSpeed">Rotor Speed \( N \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( N = \)</div>
+            <div class="result-value" id="rotorSpeed"></div>
+            <div class="fixed-part-2">\( \text{rpm} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="rotorFrequency">Rotor Frequency \( f_r \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( f = \)</div>
+            <div class="result-value" id="rotorFrequency"></div>
+            <div class="fixed-part-2">\( \text{Hz} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="electromagneticTorque">Electromagnetic Torque \( \tau_{em} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( \tau = \)</div>
+            <div class="result-value" id="electromagneticTorque"></div>
+            <div class="fixed-part-2">\( \text{N.m} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="usefulTorque">Useful Torque \( \tau_u \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( \tau = \)</div>
+            <div class="result-value" id="usefulTorque"></div>
+            <div class="fixed-part-2">\( \text{N.m} \)</div>
+          </div>
+        </div>
+
+
+        <div class="label-input">
+          <label for="startingTorque">Starting Torque \( \tau_d \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( \tau= \)</div>
+            <div class="result-value" id="startingTorque"></div>
+            <div class="fixed-part-2">\( \text{N.m} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="maxTorqueResult">Maximum Torque \( \tau_{max} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( \tau = \)</div>
+            <div class="result-value" id="maxTorqueResult"></div>
+            <div class="fixed-part-2">\( \text{N.m} \)</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="Stator-resistance-inputs">
+        <div class="card-header">
+          <img class="card-logo" src="../logos/bolt.svg">
+          <h2 class="card-title">Electrical Parameters</h2>
+        </div>
+        <div class="label-input">
+          <label for="supplyVoltage">Supply Voltage \( V_s \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( V = \)</div>
+            <div class="result-value" id="supplyVoltage"></div>
+            <div class="fixed-part-2">\( \text{V} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="supplyCurrent">Supply Current \( I_s \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( I = \)</div>
+            <div class="result-value" id="supplyCurrent"></div>
+            <div class="fixed-part-2">\( \text{A} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="brachCurrent">Current \( I_{s\mu} \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( I = \)</div>
+            <div class="result-value" id="brachCurrent"></div>
+            <div class="fixed-part-2">\( \text{A} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="rotorCurrentPrime">Rotor Current \( I'_r \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( I = \)</div>
+            <div class="result-value" id="rotorCurrentPrime"></div>
+            <div class="fixed-part-2">\( \text{A} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="reactivePower">Reactive Power \( Q \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( Q = \)</div>
+            <div class="result-value" id="reactivePower"></div>
+            <div class="fixed-part-2">\( \text{VAR} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="apparentPower">Apparent Power \( S \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( S = \)</div>
+            <div class="result-value" id="apparentPower"></div>
+            <div class="fixed-part-2">\( \text{VA} \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="powerFactor">Power Factor \( \cos(\phi) \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( P_F = \)</div>
+            <div class="result-value" id="powerFactor"></div>
+            <div class="fixed-part-2"></div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="phaseShift">Phase Shift \( \phi \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( \phi = \)</div>
+            <div class="result-value" id="phaseShift"></div>
+            <div class="fixed-part-2">\( ° \)</div>
+          </div>
+        </div>
+        <div class="label-input">
+          <label for="gammaAngle">Angle \( \gamma \) :</label>
+          <div class="global-input">
+            <div class="fixed-part-1">\( \gamma = \)</div>
+            <div class="result-value" id="gammaAngle"></div>
+            <div class="fixed-part-2">\( ° \)</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <span>&copy; 2025-2026 All rights reserved.</span>
+  </footer>
+
+  <!-- Load scripts in correct order: calculations first, then renderer, then main app -->
+  <script src="../scripts/circle_calculations.js"></script>
+  <script src="../scripts/characteristic_curves.js"></script>
+  <script src="../scripts/circle_diagram.js"></script>
+</body>
+
+</html>

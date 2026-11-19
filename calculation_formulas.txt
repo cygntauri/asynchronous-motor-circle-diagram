@@ -1,0 +1,220 @@
+================================================================================
+CIRCLE DIAGRAM CALCULATION FORMULAS - MODIFICATION GUIDE
+================================================================================
+
+This document explains how to modify the calculation formulas used in the
+asynchronous motor circle diagram application.
+
+All calculations are located in: public/scripts/circle_calculations.js
+
+================================================================================
+1. GAMMA ANGLE (γ) - Line 115-123
+================================================================================
+
+CURRENT FORMULA:
+  sin γ ≈ tan γ = (2 × Rs × I0 × sin φ0) / V1
+
+WHERE:
+  - Rs = Stator resistance (Ohms)
+  - I0 = No-load current (A)
+  - φ0 = No-load power factor angle (radians)
+  - V1 = No-load voltage (V)
+
+CONDITION:
+  - γ is calculated only for motors with Pu < 15kW
+  - For motors ≥ 15kW, γ = 0 (negligible)
+
+TO MODIFY:
+  1. Open public/scripts/circle_calculations.js
+  2. Find the section starting at line 115 (search for "Angle γ")
+  3. Modify the formula inside the if (d.Pn < 15000) block
+  
+EXAMPLE - Changing power threshold to 10kW:
+  Change: if (d.Pn < 15000)
+  To:     if (d.Pn < 10000)
+
+EXAMPLE - Using different gamma formula:
+  Change: r.gamma = (2 * d.Rs * d.I0 * r.sinphi0) / d.V0
+  To:     r.gamma = YOUR_NEW_FORMULA
+
+================================================================================
+2. NO-LOAD POWER FACTOR (cos φ0) - Line 96-100
+================================================================================
+
+CURRENT FORMULA:
+  cos φ0 = P0 / (√3 × V0 × I0)
+
+WHERE:
+  - P0 = No-load power (W)
+  - V0 = No-load voltage (V)
+  - I0 = No-load current (A)
+
+TO MODIFY:
+  1. Find line 96-100 in circle_calculations.js
+  2. Modify the cosphi0 calculation
+
+================================================================================
+3. SHORT-CIRCUIT CURRENT REGULATION - Line 103-107
+================================================================================
+
+CURRENT FORMULAS:
+  Icc = Icc' × (Vn / Vcc')
+  Pcc = Pcc' × (Vn / Vcc')²
+
+These formulas regulate the blocked rotor test values (measured at reduced
+voltage) to nominal voltage conditions.
+
+WHERE:
+  - Icc' = Blocked rotor current at reduced voltage (A)
+  - Vcc' = Blocked rotor test voltage (V)
+  - Vn = Nominal voltage (V)
+
+TO MODIFY:
+  1. Find line 103-107 in circle_calculations.js
+  2. Change the ratio or regulation formulas as needed
+
+================================================================================
+4. IRON AND MECHANICAL LOSSES - Line 126-128
+================================================================================
+
+CURRENT FORMULAS:
+  P_iron_mech = P0 - 3 × Rs × I0²
+  P_iron = P_iron_mech × 0.7
+  P_mech = P_iron_mech × 0.3
+
+The default split is 70% iron losses, 30% mechanical losses.
+
+TO MODIFY:
+  1. Find line 126-128 in circle_calculations.js
+  2. Change the percentages (0.7 and 0.3) as needed
+
+================================================================================
+5. CIRCLE CENTER (Ω) CALCULATION - Line 170-198
+================================================================================
+
+The circle center Ω is calculated as the intersection of:
+  - The perpendicular bisector of M0-Mc
+  - The horizontal line at y = A.y (accounting for gamma offset)
+
+TO MODIFY:
+  1. Find the calculateCircleGeometry() function starting at line 145
+  2. The center calculation starts at line 170
+
+================================================================================
+6. POWER CALCULATIONS FOR POINT M - Line 372-389
+================================================================================
+
+CURRENT FORMULAS:
+  Pa = √3 × Vn × I1 × cos φ        (Absorbed power)
+  Pjs = 3 × Rs × I1²               (Stator copper losses)
+  Pfer = P_iron                    (Iron losses, from no-load test)
+  Ptr = Pa - Pjs - Pfer            (Transmitted power / air gap power)
+  Pjr = Ptr × slip                 (Rotor copper losses)
+  Pem = Ptr - Pjr                  (Electromagnetic power)
+  Pu = Pem - Pmec                  (Useful/output power)
+
+TO MODIFY:
+  1. Find the calculateForPointM() function starting at line 324
+  2. Locate the powers calculation section at line 372
+  3. Modify the formulas as needed
+
+================================================================================
+7. TORQUE CALCULATIONS - Line 381-384
+================================================================================
+
+CURRENT FORMULAS:
+  Tem = Pem / ω                    (Electromagnetic torque)
+  Tu = Pu / ω                      (Useful torque)
+  Tc = Pmec / ω                    (Loss torque)
+
+WHERE:
+  ω = n × 2π / 60                  (Angular speed in rad/s)
+  n = ns × (1 - slip)              (Rotor speed in rpm)
+
+TO MODIFY:
+  1. Find line 381-384 in circle_calculations.js
+  2. Modify the torque calculation formulas
+
+================================================================================
+8. EFFICIENCY CALCULATION - Line 385
+================================================================================
+
+CURRENT FORMULA:
+  η = Pu / Pa
+
+TO MODIFY:
+  1. Find line 385 in circle_calculations.js
+  2. Change the efficiency calculation if needed
+
+================================================================================
+9. SLIP CALCULATION FROM POINT M POSITION - Line 341-346
+================================================================================
+
+The slip is calculated based on the angular position of point M on the circle
+relative to M0 (no-load) and Mc (short-circuit) points.
+
+CURRENT FORMULA:
+  slip = (angleM - angleM0) / (angleMc - angleM0)
+
+WHERE:
+  - angleM = atan2(M.x - Ω.x, M.y - Ω.y)
+  - angleM0 = atan2(M0.x - Ω.x, M0.y - Ω.y)
+  - angleMc = atan2(Mc.x - Ω.x, Mc.y - Ω.y)
+
+TO MODIFY:
+  1. Find line 341-346 in circle_calculations.js
+  2. Modify the slip calculation logic
+
+================================================================================
+10. REACTIVE POWER AND APPARENT POWER - Line 387-388
+================================================================================
+
+CURRENT FORMULAS:
+  Q = √3 × Vn × I1 × sin φ         (Reactive power)
+  S = √3 × Vn × I1                 (Apparent power)
+
+TO MODIFY:
+  1. Find line 387-388 in circle_calculations.js
+  2. Modify as needed
+
+================================================================================
+TIPS FOR MAKING CHANGES
+================================================================================
+
+1. BACKUP FIRST: Before making any changes, create a backup of 
+   circle_calculations.js
+
+2. TEST INCREMENTALLY: Make one change at a time and test the diagram
+
+3. CHECK UNITS: Ensure all units are consistent:
+   - Power in Watts (kW inputs are converted to W)
+   - Voltage in Volts
+   - Current in Amperes
+   - Angles in Radians
+
+4. CONSOLE LOGGING: Use console.log() to debug intermediate values:
+   console.log('My value:', myVariable);
+
+5. VALIDATION: The validateInputs() function (line 59-80) checks for missing
+   or invalid data. Add more checks there if needed.
+
+================================================================================
+COORDINATE SYSTEM
+================================================================================
+
+The circle diagram uses a current-based coordinate system:
+  - X-axis: Reactive component of current (sinφ direction)
+  - Y-axis: Active component of current (cosφ direction)
+  - Point M0: No-load operating point (small I0, high cosφ0)
+  - Point Mc: Short-circuit point (large Icc, low cosφcc)
+  - Circle: Locus of all possible operating points
+
+================================================================================
+CONTACT
+================================================================================
+
+For questions about the formulas or implementation, refer to standard 
+electrical engineering textbooks on induction motor circle diagrams, or
+consult the original design documentation.
+
+Last updated: 2026-01-03

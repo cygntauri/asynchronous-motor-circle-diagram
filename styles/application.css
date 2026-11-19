@@ -1,0 +1,828 @@
+:root {
+	--dark-blue: #07041B;
+	--blue: #110D30;
+	--gray: #8A829A;
+	--silver: #9DA1B7;
+	--gradient1: linear-gradient(to right, #2E9EF7, #BF3EFE);
+	--gradient2: linear-gradient(to right, #4BD5FB, #4187D4, #CC79FA);
+	--blue-gradient: linear-gradient(to bottom, #4D8EE3, #01D1F2);
+	--orange-gradient: linear-gradient(to bottom, #FE6247, #FFB82E);
+	--purple-gradient: linear-gradient(to right, #BF40F0, #C442A9);
+	--red-gradient: linear-gradient(to right, #F6192B, #FE6743);
+}
+
+@font-face {
+	font-family: 'Satoshi-Regular';
+	src: url(../fonts/Satoshi/Satoshi-Regular.woff2) format('woff2'), url(../fonts/Satoshi/Satoshi-Regular.woff) format('woff'), url(../fonts/Satoshi/Satoshi-Regular.ttf) format('truetype');
+	font-weight: 400;
+	font-display: fallback;
+	font-style: normal
+}
+
+@font-face {
+	font-family: 'Satoshi-Medium';
+	src: url(../fonts/Satoshi/Satoshi-Medium.woff2) format('woff2'), url(../fonts/Satoshi/Satoshi-Medium.woff) format('woff'), url(../fonts/Satoshi/Satoshi-Medium.ttf) format('truetype');
+	font-weight: 500;
+	font-display: fallback;
+	font-style: normal
+}
+
+@font-face {
+	font-family: 'Satoshi-Bold';
+	src: url(../fonts/Satoshi/Satoshi-Bold.woff2) format('woff2'), url(../fonts/Satoshi/Satoshi-Bold.woff) format('woff'), url(../fonts/Satoshi/Satoshi-Bold.ttf) format('truetype');
+	font-weight: 700;
+	font-display: fallback;
+	font-style: normal
+}
+
+@font-face {
+	font-family: 'Satoshi-Black';
+	src: url(../fonts/Satoshi/Satoshi-Black.woff2) format('woff2'), url(../fonts/Satoshi/Satoshi-Black.woff) format('woff'), url(../fonts/Satoshi/Satoshi-Black.ttf) format('truetype');
+	font-weight: 900;
+	font-display: fallback;
+	font-style: normal
+}
+
+@font-face {
+	font-family: 'ABeeZee';
+	src: url(../fonts/ABeeZee/ABeeZee-Regular.ttf) format('truetype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: fallback
+}
+
+@font-face {
+	font-family: 'ABeeZee';
+	src: url(../fonts/ABeeZee/ABeeZee-Italic.ttf) format('truetype');
+	font-weight: 400;
+	font-style: italic;
+	font-display: fallback
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ecedf4;
+  font-family: 'ABeeZee', sans-serif;
+  width: 90%; 
+  margin: 0 auto;
+  height: 2000px;
+}
+
+.main-header {
+  position: fixed;
+  top: 20px;
+  left: 50%;                /* place le coin gauche au centre */
+  transform: translate(-50%, 0); /* centre horizontalement */
+  height: 80px;
+  width: 90%;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 40px;
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.main-header.header-hidden {
+  transform: translate(-50%, -120%);
+  opacity: 0;
+}
+
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  gap: 0;
+  padding: 0;
+}
+
+.nav-link {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #222;
+  font-size: 16px;
+  font-weight: 500;
+  min-width: 80px;
+  transition: color 0.2s;
+  font-family: 'Satoshi', Arial, sans-serif;
+  padding: 10.5px 20px;
+}
+
+.main-header .nav-logo {
+  height: 32px;
+  display: block;
+  position: absolute;
+  left: 20px;
+}
+
+.nav-link .nav-icon {
+  height: 32px;
+  margin: 0 0 4px 0;
+  display: block;
+}
+
+.nav-link {
+  color: var(--gray);
+  box-sizing: border-box;
+}
+
+.nav-link .nav-icon,
+.nav-link span {
+  color: var(--gray);
+  filter: grayscale(1) brightness(0.6);
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+}
+
+.nav-link.active .nav-icon,
+.nav-link.active span {
+  background: var(--red-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: none;
+}
+
+.nav-link.active {
+  background: #f5f5f7;
+  border-bottom: 2px solid #F6192B;
+  border-radius: 12px 12px 0 0;
+}
+
+.nav-link.active:hover {
+  /* Keep the same style on hover */
+}
+
+.nav-link:hover .nav-icon,
+.nav-link:hover span {
+  opacity: 0.7;
+}
+
+/*titles and paragraphs*/
+main > h2 {
+    width: 90%;
+    margin: 0 auto;
+    background: linear-gradient(135deg, #F6192B 0%, #F6192B 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    font-family: 'Satoshi-Bold', Arial, sans-serif;
+    font-size: 39px;
+    margin-top: 150px;
+    margin-bottom: 23px;
+    
+}
+
+.explanation {
+    font-family: 'ABeeZee';
+    line-height: 1.5;
+    width: 90%;
+    margin: 0 auto;
+    text-align: justify;
+    margin-bottom: 50px;
+    text-shadow: 0 4px 4px rgba(0,0,0,0.1);
+}
+
+/*Steps*/
+#steps {
+	margin-top: 70px;
+	width: 100%;
+	padding: 1vw
+}
+
+.steps-wrapper {
+	width: 100%;
+	height: 350px;
+	display: flex;
+	align-items: center;
+	justify-content: center
+}
+
+.steps-container {
+	height: 400px;
+	display: flex;
+	flex-wrap: nowrap;
+	justify-content: start
+}
+
+.step {
+	width: clamp(75px, 7vw, 80px);
+	border-radius: .75rem;
+	background-size: cover;
+	cursor: pointer;
+	overflow: hidden;
+	border-radius: 2rem;
+	margin: 0 10px;
+	display: flex;
+	align-items: flex-end;
+	transition: .6s cubic-bezier(.28, -.03, 0, .99);
+  box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+}
+
+.step>.row {
+	color: #fff;
+	display: flex;
+	flex-wrap: nowrap
+}
+
+.step>.row>.step-number {
+	background: white;
+	border-radius: 50%;
+	width: clamp(30px, 6vw, 50px);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 15px;
+  width: 50px;
+  height: 50px;
+}
+
+.step>.row>.step-number p{
+	background: var(--red-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-size: 20px;
+  font-family: 'Satoshi-Black';
+}
+
+
+.step>.row>.description {
+	display: flex;
+	justify-content: center;
+	flex-direction: column;
+	overflow: hidden;
+	height: 80px;
+	width: clamp(200px, 40vw, 520px);
+	opacity: 0;
+	transform: translateY(30px);
+	transition-delay: .3s;
+	transition: all .3s ease
+}
+
+.description > p {
+	color: #dddde1;
+	padding-top: 5px;
+	margin: 0
+}
+
+.description h4 {
+	text-transform: uppercase;
+	margin: 0
+}
+
+.input-step {
+	display: none
+}
+
+.input-step:checked+label {
+	width: clamp(300px, 50vw, 600px)
+}
+
+.input-step:checked+label .description {
+	opacity: 1 !important;
+	transform: translateY(0) !important
+}
+
+.step[for="c1"] {
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.15) 60%, rgba(0, 0, 0, 0)), url(../images/step1.jpg)
+}
+
+.step[for="c2"] {
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.15) 60%, rgba(0, 0, 0, 0)), url(../images/replace__classics__with__calculate_.png)
+}
+
+.step[for="c3"] {
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.15) 60%, rgba(0, 0, 0, 0)), url(../images/step3.jpg)
+}
+
+.step[for="c4"] {
+	background-image: linear-gradient(to top, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.15) 60%, rgba(0, 0, 0, 0)), url(../images/step4.jpg)
+}
+
+
+/* Inputs*/
+.inputs{
+  margin-top: 80px;
+}
+
+.select{
+  border: none;
+  width: 100%;
+  height: 50px;
+  color: black;
+  font-family: 'Satoshi-Bold';
+  font-size: 15px;
+  padding-left: 10px;
+
+}
+
+.inputs > div, .results > div{
+  
+  border-radius: 30px;
+  padding: 50px;
+  margin-bottom: 50px;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+   background: var(--red-gradient);
+  color: white;
+}
+
+
+.label-input{
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+label{
+  text-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+.global-input{
+  display: flex;
+  flex-direction: row;
+  border-radius: 55px;
+  transition: transform 0.2s ease;
+  
+}
+
+select {
+  width: 85%;
+  height: 52px;
+  font-family: 'Satoshi-Bold', sans-serif;
+  padding: 0 15px;
+  font-size: 18px;
+  background-color: #fff;
+  border-radius: 55px;
+  cursor: pointer;
+  border: none;
+}
+
+option{
+  font-family: 'Satoshi-Bold', sans-serif;
+  font-size: 18px;
+  background-color: #fff;
+  border: none;
+  border-radius: 55px;
+  height: 52px;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+}
+
+
+.global-input:focus-within{
+  transform: translateY(-2px);
+}
+
+input{
+  border: none;
+  width: 30%;
+  height: 50px;
+  display: block;
+  color: black;
+  font-family: 'Satoshi-Bold';
+  font-size: 18px;
+  padding-left: 10px;
+}
+
+.point-shortcuts {
+  position: absolute;
+  bottom: 20px;
+  margin:auto;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.95);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+  width: fit-content;
+}
+
+.point-shortcuts__label {
+  font-family: 'Satoshi-Bold', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  background: var(--red-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.point-shortcut {
+  border: none;
+  border-radius: 30px;
+  padding: 10px 16px;
+  font-family: 'Satoshi-Bold', sans-serif;
+  font-size: 14px;
+  background: white;
+  color: #2b2a38;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  box-shadow: 0 3px 5px rgba(63, 61, 86, 0.15);
+  text-align: left;
+}
+
+.point-shortcut:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px rgba(63, 61, 86, 0.15);
+}
+
+.point-shortcut:active {
+  transform: translateY(0);
+}
+
+input[type="number"] {
+  appearance: auto;
+  -webkit-appearance: auto;
+  -moz-appearance: auto;
+  /* Les flèches natives seront visibles */
+}
+
+.result-value{
+  width: 30%;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  padding-left: 10px;
+  font-family: 'Satoshi-Bold';
+  font-size: 18px;
+  color: black;
+  background-color: white;
+}
+
+
+
+.fixed-part-1{
+  display: flex;
+  width: 25%;
+  background-color: white;
+  border-radius: 55px 0px 0px 55px;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  border-right: 1px solid rgb(230, 227, 227);
+  color: black;
+}
+
+.fixed-part-2{
+  display: flex;
+  width: 25%;
+  background-color: white;
+  border-radius: 0px 55px 55px 0px;
+  border-left: 1px solid rgb(230, 227, 227);
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.card-title{
+  font-family: 'Satoshi-Bold';
+}
+
+/* header de carte au-dessus des inputs dans chaque bloc */
+.card-header {
+  grid-column: 1 / -1;   /* prend toute la largeur de la grille */
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.card-logo {
+  height: 32px;
+  width: 32px;
+}
+  
+/* ============================================
+   Draw Button Styles
+   ============================================ */
+
+.draw-button-container {
+  margin: 50px 0;
+  display: flex;
+  justify-content: center;
+  padding: 0 20px;
+}
+
+.draw-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 15px 30px;
+  font-size: 18px;
+  font-weight: 600;
+  font-family: 'Satoshi-Bold', sans-serif;
+  color: white;
+  background: var(--red-gradient);
+  border: none;
+  border-radius: 55px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 5px 10px rgba(246, 25, 43, 0.3);
+  min-width: 320px;
+}
+
+.draw-icon {
+  width: 30px;
+  height: 30px;
+  margin-right: 8px;
+  flex-shrink: 0;
+}
+
+.draw-button.is-loading .draw-icon {
+  animation: rotate 1.5s linear infinite;
+}
+
+.draw-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px rgba(246, 25, 43, 0.4);
+}
+
+.draw-button:active {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 15px rgba(246, 25, 43, 0.3);
+}
+
+.draw-button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.draw-button svg {
+  animation: rotate 2s linear infinite paused;
+  flex-shrink: 0;
+}
+
+.draw-button:disabled svg {
+  animation-play-state: running;
+}
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .draw-button {
+    font-size: 16px;
+    padding: 16px 35px;
+    min-width: auto;
+    width: 90%;
+  }
+}
+
+.plotting{
+  height: 80vh;
+  width: 96%;
+  margin: 0 auto 50px auto;
+  background-color: white;
+  border-radius: 30px;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+}
+
+
+/*Footer*/
+
+.footer {
+  background: #fff;
+  color: #a3a2a2;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 20px 20px 0px 0px;
+  font-family: 'AbeeZee', Arial, sans-serif;
+  width: 98.85vw;
+  height: 50px;
+  margin-left: -5vw;
+  align-items: center;
+  padding-bottom: 20px;
+  box-shadow: 0 -6px 20px -4px rgba(0,0,0,0.10);
+  margin-top: 100px;
+}
+
+.footer span{
+  position: relative;
+  top: 50%;
+}
+/* ============================================
+   CANVAS AND DIAGRAM STYLING ADDITIONS
+   Add these to the END of application.css
+   ============================================ */
+
+/* Circle Diagram Canvas Container */
+#circleDiagramCanvas {
+  width: 100% !important;
+  height: 100% !important;
+  cursor: crosshair;
+  border-radius: 20px;
+}
+
+.plotting {
+  position: relative;
+  min-height: 600px;
+  background: white;
+  border-radius: 30px;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  padding: 20px;
+  margin-bottom: 50px;
+}
+
+/* Zoom Controls Styling */
+#zoomControls button {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+#zoomControls button:hover {
+  background: linear-gradient(to right, #F6192B, #FE6743) !important;
+  color: white;
+  transform: scale(1.05);
+  box-shadow: 0 4px 8px rgba(246, 25, 43, 0.3);
+}
+
+#zoomControls button:active {
+  transform: scale(0.95);
+}
+
+/* Curves Section */
+.curves-section {
+  width: 100%;
+}
+
+.curves-grid {
+  width: 100%;
+}
+
+.curve-container {
+  position: relative;
+  overflow: hidden;
+}
+
+.curve-container canvas {
+  display: block;
+  width: 100% !important;
+  height: auto !important;
+}
+
+/* Readonly inputs styling */
+input[readonly] {
+  background-color: #f8f9fa;
+  cursor: not-allowed;
+  opacity: 0.9;
+}
+
+/* Notification Animation */
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideOut {
+  from {
+    transform: translateX(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+/* Responsive Design for Curves */
+@media (max-width: 1024px) {
+  .curves-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  .curve-container {
+    grid-column: span 1 !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .plotting {
+    min-height: 400px;
+    padding: 10px;
+  }
+  
+  #zoomControls {
+    top: 10px !important;
+    right: 10px !important;
+    padding: 8px !important;
+  }
+  
+  #zoomControls button {
+    width: 38px;
+    height: 38px;
+    font-size: 16px;
+  }
+  
+  .curve-container canvas {
+    height: 250px !important;
+  }
+}
+
+
+.gauge-card {
+  background: white;
+  border-radius: 20px;
+  padding: 24px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  font-family: 'Satoshi-Bold', sans-serif;
+}
+
+.gauge-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.gauge-container {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  margin: 0 auto;
+}
+
+.gauge-container svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+  transform: rotate(-90deg);
+}
+
+.gauge-container circle {
+  transition: stroke-dashoffset 0.5s ease;
+}
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.gauge-label {
+  margin-top: 12px;
+  font-size: 14px;
+  background: var(--red-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.gauge-value {
+  font-size: 24px;
+  background: var(--red-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}

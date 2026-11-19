@@ -1,0 +1,534 @@
+:root {
+	--dark-blue: #07041B;
+	--blue: #110D30;
+	--gray: #8A829A;
+	--silver: #9DA1B7;
+	--gradient1: linear-gradient(to right, #2E9EF7, #BF3EFE);
+	--gradient2: linear-gradient(to right, #4BD5FB, #4187D4, #CC79FA);
+	--blue-gradient: linear-gradient(to bottom, #4D8EE3, #01D1F2);
+	--orange-gradient: linear-gradient(to bottom, #FE6247, #FFB82E);
+	--purple-gradient: linear-gradient(to right, #BF40F0, #C442A9);
+	--red-gradient: linear-gradient(to right, #F6192B, #FE6743);
+}
+
+@font-face {
+	font-family: 'Satoshi-Regular';
+	src: url(../fonts/Satoshi/Satoshi-Regular.woff2) format('woff2'), url(../fonts/Satoshi/Satoshi-Regular.woff) format('woff'), url(../fonts/Satoshi/Satoshi-Regular.ttf) format('truetype');
+	font-weight: 400;
+	font-display: fallback;
+	font-style: normal
+}
+
+@font-face {
+	font-family: 'Satoshi-Medium';
+	src: url(../fonts/Satoshi/Satoshi-Medium.woff2) format('woff2'), url(../fonts/Satoshi/Satoshi-Medium.woff) format('woff'), url(../fonts/Satoshi/Satoshi-Medium.ttf) format('truetype');
+	font-weight: 500;
+	font-display: fallback;
+	font-style: normal
+}
+
+@font-face {
+	font-family: 'Satoshi-Bold';
+	src: url(../fonts/Satoshi/Satoshi-Bold.woff2) format('woff2'), url(../fonts/Satoshi/Satoshi-Bold.woff) format('woff'), url(../fonts/Satoshi/Satoshi-Bold.ttf) format('truetype');
+	font-weight: 700;
+	font-display: fallback;
+	font-style: normal
+}
+
+@font-face {
+	font-family: 'Satoshi-Black';
+	src: url(../fonts/Satoshi/Satoshi-Black.woff2) format('woff2'), url(../fonts/Satoshi/Satoshi-Black.woff) format('woff'), url(../fonts/Satoshi/Satoshi-Black.ttf) format('truetype');
+	font-weight: 900;
+	font-display: fallback;
+	font-style: normal
+}
+
+@font-face {
+	font-family: 'ABeeZee';
+	src: url(../fonts/ABeeZee/ABeeZee-Regular.ttf) format('truetype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: fallback
+}
+
+@font-face {
+	font-family: 'ABeeZee';
+	src: url(../fonts/ABeeZee/ABeeZee-Italic.ttf) format('truetype');
+	font-weight: 400;
+	font-style: italic;
+	font-display: fallback
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ecedf4;
+  font-family: 'ABeeZee', sans-serif;
+  width: 90%; 
+  margin: 0 auto;
+}
+
+
+.red-gradient {
+  background: linear-gradient(90deg, #ff4d4d, #ff0000);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: bold;
+}
+
+.main-header {
+  position: fixed;
+  top: 20px;
+  left: 50%;                /* place le coin gauche au centre */
+  transform: translateX(-50%); /* décale de moitié sa largeur */
+  height: 80px;
+  width: 90%;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 40px;
+
+}
+
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  gap: 0;
+  padding: 0;
+}
+
+.nav-link {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+.nav-link.active {
+  background: #f5f5f7;
+  border-bottom: 2px solid #F6192B;
+  border-radius: 12px 12px 0 0;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #222;
+  font-size: 16px;
+  font-weight: 500;
+  min-width: 80px;
+  transition: color 0.2s;
+  font-family: 'Satoshi', Arial, sans-serif;
+  padding: 10.5px 20px;
+}
+
+.main-header .nav-logo {
+  height: 32px;
+  display: block;
+  position: absolute;
+  left: 20px;
+}
+
+.nav-link .nav-icon {
+  height: 32px;
+  margin: 0 0 4px 0;
+  display: block;
+}
+
+.nav-link {
+  color: var(--gray);
+}
+
+.nav-link .nav-icon,
+.nav-link span {
+  color: var(--gray);
+  filter: grayscale(1) brightness(0.6);
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+}
+
+.nav-link.active .nav-icon,
+.nav-link.active span {
+  background: var(--red-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: none;
+}
+
+.nav-link.active {
+
+  border-bottom: 2px solid #F6192B;
+}
+
+.nav-link.active:hover {
+  /* Keep the same style on hover */
+}
+
+.nav-link:hover .nav-icon,
+.nav-link:hover span {
+  opacity: 0.7;
+}
+
+/* Hero Section */
+
+.hero-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 160px;
+}
+
+.hero-section-image{
+  text-align: center;
+}
+
+.hero-section-motor{
+  height: 320px;
+}
+
+.hero-section > div {
+  flex: 1;           
+  padding: 10px;
+}
+
+.hero-section-text h1{
+  font-size: 42px;
+  font-family: 'Satoshi-Bold';
+  color: #000;
+  line-height: 1;
+  margin: 0px;
+}
+
+.hero-section-text p{
+  line-height: 1.5;
+  margin: 25px 0px 35px 0px;
+}
+
+.hero-button-container{
+  display: inline-block;
+    text-decoration: none;
+}
+
+.hero-button {
+  display: flex;
+  flex-direction: row;
+  background: rgba(246, 25, 43, 0.8);
+  border-radius: 20px;
+  color: black;
+  transition: background 0.3s;
+  align-items: center;
+  font-family: 'Satoshi-Bold';
+  font-size: 15px;
+  padding: 10px 15px;
+}
+
+.hero-button:hover {
+  scale: 1.05;
+}
+
+.hero-button p{
+  margin: 0px;
+}
+
+.hero-button-arrow{
+  width: 20px;
+  margin-left: 6px;
+  fill: black;
+}
+
+
+/* Function Section */
+
+.function-section{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-top: 160px;
+}
+
+.function-section > div {
+  flex: 1;           
+  background-color: white;
+  border-radius: 20px;
+  padding: 40px 30px;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+  gap: 30px;
+}
+
+
+.function-section-logo{
+  height: 60px;
+  margin-bottom: 35px;
+}
+
+.function-section-card h2{
+  font-size: 26px;
+  font-family: 'Satoshi-Bold';
+  background: var(--red-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0px 0px 25px 0px;
+}
+
+.function-section-card p{
+  line-height: 1.6;
+}
+
+.function-section-card a{
+  text-decoration: none;
+  color:black;
+  font-size: 13px;
+}
+
+/* Graph Section */
+.graph-section{
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
+  margin-top: 160px;
+  
+}
+
+.graph-section > * {
+  flex: 1;           
+  border-radius: 20px;
+  gap: 30px;
+}
+
+.graph-section-text{
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 40px;
+}
+
+.graph-section-text h2{
+  font-size: 40px;
+  font-family: 'Satoshi-Bold';
+  background: var(--red-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0px;
+}
+
+.graph-section-text p{
+  line-height: 1.8;
+  margin: 0px;
+}
+
+.graph-section-text a{
+  text-decoration: none;
+  color:black;
+  font-size: 13px;
+}
+
+.graph-section-image {
+  width: 45%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+/* Theory Section */
+.theory-section{
+  display: flex;
+  flex-direction: row-reverse;
+  gap: 80px;
+  margin-top: 160px;
+  
+}
+
+.theory-section > * {
+  flex: 1;           
+  border-radius: 20px;
+  gap: 30px;
+}
+
+.theory-section-text{
+    padding: 40px 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    gap: 40px;
+}
+
+.theory-section-text h2{
+  font-size: 40px;
+  font-family: 'Satoshi-Bold';
+  background: var(--red-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0px;
+}
+
+.theory-section-text p{
+  line-height: 1.8;
+  margin: 0px;
+}
+
+.theory-section-text a{
+  text-decoration: none;
+  color:black;
+  font-size: 13px;
+}
+
+.theory-section-image {
+  width: 45%;
+  height: auto;
+  display: block;
+  object-fit: contain;
+  box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+}
+
+/* About Us Section */
+.about-us-section{
+  display: flex;
+  flex-direction: row;
+  margin: 130px 0px;
+  height: 300px;
+  background: var(--red-gradient);
+  filter: brightness(0.9);
+  border-radius: 30px;
+  box-shadow: 0 10px 15px rgba(0,0,0,0.1);
+  padding: 30px;
+}
+
+.about-us-text{
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+
+.about-us-text p{
+  font-size: 17px;
+  width: 90%;
+  color: white;
+  line-height: 1.4;
+  text-shadow: 0 3px 5px rgba(0,0,0,0.2);
+}
+
+.about-us-title{
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  font-family: 'Satoshi-Bold';
+  color: white;
+  text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.about-us-title h2{
+  font-size: 35px;
+}
+
+.about-us-title img{
+  width: 35px;
+}
+
+.about-us-members {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 10px;
+  padding-top: 10px;
+}
+
+.about-us-members img{
+  display: block;
+  height: 65px;
+  width: auto;
+  animation: member-oscillate 7s ease-in-out infinite;
+}
+
+.about-us-members img:nth-child(1) {
+  animation-delay: 0s;
+}
+.about-us-members img:nth-child(2) {
+  animation-delay: 0.4s;
+}
+.about-us-members img:nth-child(3) {
+  animation-delay: 0.8s;
+}
+.about-us-members img:nth-child(4) {
+  animation-delay: 1.2s;
+}
+
+@keyframes member-oscillate {
+  0%   { transform: translateX(0); }
+  25%  { transform: translateX(-50px); }
+  50%  { transform: translateX(50px); }
+  75%  { transform: translateX(-50px); }
+  90%  { transform: translateX(0px); }
+  100% { transform: translateX(0); }
+}
+
+
+
+.about-us-button-container{
+  display: inline-block;
+  text-decoration: none;
+  margin-top: auto;
+  width: fit-content;
+}
+
+.about-us-button {
+  display: flex;
+  flex-direction: row;
+  background: white;
+  border-radius: 25px;
+  transition: background 0.3s;
+  align-items: center;
+  font-family: 'Satoshi-Bold';
+  font-size: 15px;
+  padding: 10px 15px;
+}
+
+.about-us-button:hover {
+  scale: 1.05;
+}
+
+.about-us-button p{
+  margin: 0px;
+  color:  #F6192B;
+}
+
+.about-us-button-arrow{
+  width: 20px;
+  margin-left: 6px;
+  rotate: -90deg;
+}
+
+/* Footer */
+
+.footer {
+  background: #fff;
+  color: #a3a2a2;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 20px 20px 0px 0px;
+  font-family: 'AbeeZee', Arial, sans-serif;
+  width: 98.85vw;
+  height: 50px;
+  margin-left: -5vw;
+  align-items: center;
+  padding-bottom: 20px;
+  box-shadow: 0 -6px 20px -4px rgba(0,0,0,0.10);
+}
+
+.footer span{
+  position: relative;
+  top: 50%;
+}

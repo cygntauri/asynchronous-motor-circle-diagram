@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Asynchrone - Theory | Circle Diagram of the Asynchronous Machine</title>
+  <link rel="stylesheet" href="../styles/theory.css">
+  <link rel="icon" type="image/x-icon" href="../logos/A.svg">
+</head>
+
+<body>
+  <header class="main-header">
+    <a href="../index.html" class="nav-logo">
+      <img src="../logos/Asynchrone.svg" alt="Asynchrone" class="nav-logo">
+    </a>
+    <nav class="main-nav">
+      <a href="../index.html" class="nav-link active">
+        <img src="../logos/home.svg" alt="Accueil" class="nav-icon">
+        <span>Home</span>
+      </a>
+      <a href="theory.html" class="nav-link">
+        <img src="../logos/theory.svg" alt="Théorie" class="nav-icon">
+        <span>Theory</span>
+      </a>
+      <a href="application.html" class="nav-link">
+        <img src="../logos/application.svg" alt="Application" class="nav-icon">
+        <span>Application</span>
+      </a>
+    </nav>
+  </header>
+  <main>
+    <!-- Hero Section
+    <div class="hero-section"><div class="hero-section-text"><h1>The definitive tool for plotting the <span class="red-gradient">circle diagram</span> of asynchronous machines.</h1><p>This platform enables accurate plotting of asynchronous machines.<br> It offers an intuitive interface for performance analysis and visualization of key operational characteristics.</p><a href="pages/application.html" class="hero-button-container"><div class="hero-button"><p>Plot Diagram</p><img class="hero-button-arrow" src="logos/arrow.svg" alt="arrow"></div></a></div><div class="hero-section-image"><img class="hero-section-motor" src="../motor2.png" alt="motor"></div></div> -->
+    <div class="documentation">
+      <nav class="content-nav">
+        <div class="content-nav-header">
+          <img class="content-nav-logo" src="../logos/summary.svg">
+          <h1 class="content-nav-title">
+            Summary
+          </h1>
+        </div>
+        <ol>
+          <li><a href="#speed-slip">Speed and Slip Formulas</a></li>
+          <li><a href="#emf-transform">Electromotive Force (E.M.F.)</a></li>
+          <li><a href="#equivalent-circuit">Equivalent Electrical Circuit</a></li>
+          <li><a href="#power-efficiency">Power and Efficiency</a></li>
+          <li><a href="#torque">Torque Formulas</a></li>
+          <li><a href="#starting-modification">Starting &amp; Characteristic Modification</a></li>
+          <li><a href="#power-ratios">Power Ratios and Losses</a></li>
+        </ol>
+      </nav>
+      <div class="text-content">
+        <div class="content-nav-header">
+          <img class="content-nav-logo" src="../logos/document-gear.svg">
+          <h1 class="content-nav-title">
+            Documentation and Formulas
+          </h1>
+        </div>
+        <section id="speed-slip">
+          <h2>1. Speed and Slip Formulas :</h2>
+          <p class="paragraph-documentation"> The operation of the Asynchronous Machine (AM) fundamentally requires the
+            rotor speed ($n$) to be lower than the synchronous speed ($n_s$) of the stator's rotating magnetic field.
+            This necessary speed difference is defined by the slip ($g$). If the rotor achieved synchronous speed
+            ($n=n_s$), there would be no relative motion between the rotor conductors and the magnetic field;
+            consequently, no current would be induced in the rotor, and no motor torque would be generated. The slip is
+            the governing factor for the frequency of the induced rotor currents ($f_2$) and electromotive forces
+            (EMFs). </p>
+          <div class="formula math-display">\[g = \dfrac{n_s - n}{n_s}\]</div>
+          <p class="note">Here, $n$ is the mechanical rotational speed of the rotor in rev/s.</p>
+          <div class="formula math-display">\[f_2 = g\, f_1\]</div>
+          <div class="formula math-display">\[\omega_r = g\, \omega_s\]</div>
+          <div class="formula math-display">\[\Omega_r = \dfrac{\omega_r}{p} = g\, \Omega_s\]</div>
+          <p class="note">Where $p$ is the number of pole pairs.</p>
+        </section>
+        <section id="emf-transform">
+          <h2>2. Electromotive Force (E.M.F.) :</h2>
+          <p class="paragraph-documentation"> The Asynchronous Machine operates electrically like a transformer,
+            especially at standstill ($g=1$). The induced E.M.F. in the stator ($E_1$) follows the standard transformer
+            primary equation. Crucially, when the rotor is moving, its induced E.M.F. ($E_2$) is reduced by the slip
+            factor ($g$) compared to its value at rest ($E_{20}$). The transformation ratio ($m$) links the stator and
+            rotor E.M.F.s, incorporating the winding factors (KAPP coefficients $K_s, K_r$) and the number of conductors
+            ($N_s, N_r$). In an open rotor test, neglecting primary voltage drops allows this ratio to be approximated
+            by the voltage ratio $V_s/V_r$. </p>
+          <div class="formula math-display">\[E_1 = 4.44\, N_1\, f_1\, \Phi\]</div>
+          <p class="note">$N_1$ = number of stator turns, $\Phi$ = flux.</p>
+          <div class="formula math-display">\[E_{20} = 4.44\, N_2\, f\, \Phi\]</div>
+          <div class="formula math-display">\[E_2 = g\, E_{20}\]</div>
+          <div class="formula math-display">\[m = \dfrac{E_s}{E_r} = \dfrac{K_s N_s}{K_r N_r}\]</div>
+          <p class="note">Approximately (neglecting primary voltage drops): $m \cong V_s / V_r$.</p>
+        </section>
+        <section id="equivalent-circuit">
+          <h2>3. Equivalent Electrical Circuit Equations :</h2>
+          <p class="paragraph-documentation"> The governing equations rely on simplifying assumptions like neglecting
+            magnetic saturation, assuming symmetrical construction, and sinusoidal flux distribution. For steady-state
+            analysis, the complex mathematical challenge is uniting the stator and rotor domains (which operate at
+            different frequencies, $\omega_s$ and $g \omega_s$, respectively) into a single equivalent circuit. This is
+            conventionally resolved by referring all rotor quantities to the stator frequency ($\omega_s$),
+            necessitating the modification of the rotor resistance term from $R_r$ to $R_r/g$ in the equivalent
+            impedance calculation. This simplification allows the use of complex notation to analytically calculate the
+            total impedance ($Z_s$) and resulting currents. </p>
+          <div class="formula math-display">\[R_s I_s + j L_s \omega_s I_s + j M \omega_s I_r = V_s\]</div>
+          <div class="formula math-display">\[\dfrac{R_r}{g} I_r + j L_r \omega_s I_r + j M \omega_s I_s = 0\]</div>
+          <ul class="note">
+            <li>Magnetizing reactance: $X_{\mu} = m M \omega_s$</li>
+            <li>Magnetizing current: $I_{s\mu} = I_s - I_r'$</li>
+            <li>Referred rotor resistance: $R_r' = m^2 R_r$</li>
+            <li>Referred rotor current: $I_r' = -I_r / m$</li>
+            <li>Total leakage impedance referred to stator: $l_s' = l_s + l_r'$</li>
+          </ul>
+          <div class="formula math-display">\[Z_s = \dfrac{(R_{\mu} + j X_{\mu})(R_s + R_r'/g + j l_s'
+            \omega_s)}{R_{\mu} + j X_{\mu} + R_s + R_r'/g + j l_s' \omega_s}\]</div>
+          <div class="formula math-display">\[I_s = \dfrac{V_s}{Z_s}\]</div>
+          <div class="formula math-display">\[I_r' = \dfrac{V_s}{\sqrt{(R_s + R_r'/g)^2 + (l_s' \omega_s)^2}}\]</div>
+        </section>
+        <section id="power-efficiency">
+          <h2>4. Power and Efficiency Formulas :</h2>
+          <p class="paragraph-documentation"> Power analysis follows the energy flow from absorbed electrical power
+            ($P_s$) to useful mechanical power ($P_u$). The power transmitted across the air gap ($P_s'$), representing
+            $P_s$ minus all stator losses, is the key internal quantity. A foundational principle dictates that rotor
+            Joule losses ($p_{jr}$) are directly proportional to this transmitted power ($P_s'$) by the slip factor
+            ($g$). Mechanical power ($P_{mec}$) is derived by subtracting $p_{jr}$ from $P_s'$, leading ultimately to
+            the useful power ($P_u$) after subtracting mechanical losses ($p_{mec}$). Efficiency ($\eta$) is simply the
+            final output power ($P_u$) divided by the absorbed input power ($P_s$). </p>
+          <div class="formula math-display">\[P_s = 3\, \Re(Z_s)\, I_s^2\]</div>
+          <p class="note">Absorbed power minus stator losses gives power transmitted to rotor:</p>
+          <div class="formula math-display">\[P_s' = P_s - p_{fer} - p_{js}\]</div>
+          <div class="formula math-display">\[P_s' = 3\, \dfrac{R_r'}{g}\, I_r'^2 = \dfrac{p_{jr}}{g}\]</div>
+          <div class="formula math-display">\[p_{jr} = g\, P_s'\]</div>
+          <div class="formula math-display">\[p_{jr} = 3\, R_r\, I_r^2 = 3\, R_r'\, I_r'^2\]</div>
+          <div class="formula math-display">\[P_{mec} = P_s' - p_{jr} = (1 - g)\, P_s'\]</div>
+          <div class="formula math-display">\[P_u = P_{mec} - p_{mec} = (1 - g)\, P_s' - p_{mec}\]</div>
+          <p class="note">Also $P_u = \Gamma_u \Omega$, where $\Gamma_u$ is useful torque and $\Omega$ is rotor angular
+            speed.</p>
+          <div class="formula math-display">\[\eta = \dfrac{P_u}{P_s} = \dfrac{[P_s - p_{fer} - p_{js}](1-g) -
+            p_{mec}}{P_s}\]</div>
+        </section>
+        <section id="torque">
+          <h2>5. Torque Formulas :</h2>
+          <p class="paragraph-documentation"> The mechanical or synchronous torque ($\Gamma_{mec}$) is calculated simply
+            by relating the power transmitted to the rotor ($P_s'$) to the synchronous angular speed ($\Omega_s$). The
+            comprehensive analytical equation for $\Gamma_{mec}$ as a function of slip ($g$) forms the basis of the
+            mechanical characteristic. Key results derived from this relation show that, while the maximum torque
+            ($\Gamma_{max}$) is independent of rotor resistance ($R_r'$), the specific slip ($g_{\Gamma \, max}$) at
+            which this maximum torque is reached is directly proportional to $R_r'$. </p>
+          <div class="formula math-display">\[\Gamma_{mec} = \dfrac{P_{mec}}{\Omega} = \dfrac{P_s'}{\Omega_s}\]</div>
+          <div class="formula math-display">\[\Gamma_{mec} = \dfrac{3\, R_r'\, V_s^2}{\Omega_s\,
+            g}\times\dfrac{1}{\big[(R_s + R_r'/g)^2 + (l_s' \omega_s)^2\big]}\]</div>
+          <div class="formula math-display">\[\Gamma_d = \dfrac{3\, R_r'\, V_s^2}{\Omega_s}\times\dfrac{1}{\big[(R_s +
+            R_r')^2 + (l_s' \omega_s)^2\big]}\]</div>
+          <p class="note">Starting torque can also be written using rotor Joule losses at g=1: $\Gamma_d = P_s'_{g=1} /
+            \Omega_s = p_{jr} / \Omega_s$.</p>
+          <div class="formula math-display">\[R_r' = \sqrt{R_s^2 + (l_s' \omega_s)^2}\]</div>
+          <div class="formula math-display">\[g_{\Gamma\,max} = \dfrac{R_r'}{\sqrt{R_s^2 + (l_s' \omega_s)^2}}\]</div>
+          <div class="formula math-display">\[\Gamma_{max} = \dfrac{3\, V_s^2}{2\, \Omega_s}\times\dfrac{1}{\big[R_s +
+            \sqrt{R_s^2 + (l_s' \omega_s)^2}\big]}\]</div>
+        </section>
+        <section id="starting-modification">
+          <h2>6. Starting and Characteristic Modification Formulas</h2>
+          <p class="paragraph-documentation"> Starting methods are essential to limit the high current absorbed at
+            startup while ensuring sufficient torque. Techniques involve modifying the rotor circuit resistance (for
+            wound rotor motors, using a secondary rheostat) or reducing the primary supply voltage (for cage motors).
+            Because the starting torque ($\Gamma_d$) is proportional to the square of the supply voltage ($V_s$),
+            voltage reduction significantly impacts torque. However, in stable, low-slip operation, maintaining a
+            constant mechanical torque necessitates that the slip must increase proportionally to the square of the
+            inverse voltage reduction ratio. </p>
+          <h3>Starting by Secondary Rheostat (Wound Rotor Motors)</h3>
+          <div class="formula math-display">\[k^n = \dfrac{R_r + R_h}{R_r}\]</div>
+          <div class="formula math-display">\[\dfrac{g_1}{g_2} = \dfrac{R_r'}{R_r' + R_h}\]</div>
+          <h3>Starting by Primary Voltage Reduction (Squirrel Cage Motors)</h3>
+          <p class="note">With series stator resistance $R_h$:</p>
+          <div class="formula math-display">\[I_d = \dfrac{V_s}{\sqrt{R_s^2 + X_s^2}}\]</div>
+          <div class="formula math-display">\[I_d' = \dfrac{V_s}{\sqrt{(R_h + R_s)^2 + X_s^2}}\]</div>
+          <div class="formula math-display">\[\Gamma_d' = \left(\dfrac{V_s'}{V_s}\right)^2 \Gamma_d =
+            \left(\dfrac{I_d'}{I_d}\right)^2 \Gamma_d\]</div>
+          <p class="note">Star-Delta starting (phase voltage reduced by $\sqrt{3}$):</p>
+          <div class="formula math-display">\[I_d' = \dfrac{I_d}{\sqrt{3}}\]</div>
+          <div class="formula math-display">\[\Gamma_d' = \dfrac{\Gamma_d}{3}\]</div>
+          <h3>Modification by Voltage Variation (Approximation)</h3>
+          <div class="formula math-display">\[\dfrac{g_2}{g_1} \cong \left(\dfrac{V_{s1}}{V_{s2}}\right)^2\]</div>
+          <p class="note">Valid for nominal operation at small slip (constant torque assumption).</p>
+        </section>
+        <section id="power-ratios">
+          <h2>7. Power Ratios and Losses :</h2>
+          <p class="paragraph-documentation"> Graphical circle-diagram projections give the following relations:</p>
+          <ul>
+            <li>Iron losses: $p_{fer} = 3 V_s \cdot M_0M_1$</li>
+            <li>Stator Joule losses: $p_{js} = 3 V_s \cdot M_1M_2$</li>
+            <li>Rotor Joule losses: $p_{jr} = 3 V_s \cdot M_2M_3$</li>
+            <li>Mechanical losses: $p_{mec} = 3 V_s \cdot M_3M_4$</li>
+            <li>Useful Power: $P_u = 3 V_s \cdot M_4M$</li>
+            <li>Absorbed Power: $P_s = 3 V_s \cdot M_0M$</li>
+            <li>Power transmitted to rotor: $P_s' = 3 V_s \cdot M_2M$</li>
+            <li>Mechanical torque: $\Gamma_{mec} = \dfrac{3 V_s \cdot M_2M}{\Omega_s}$</li>
+            <li>Slip (graphical): $g = \dfrac{M_2M_3}{M_2M}$</li>
+            <li>Efficiency: $\eta = \dfrac{M_4M}{M_0M}$</li>
+          </ul>
+          <h3>Separating Iron and Mechanical Losses (No-Load Test)</h3>
+          <div class="formula math-display">\[P_{sv} \cong p_{fer} + p_{mec}\]</div>
+          <div class="formula math-display">\[P_{sv} - P_{svo} \cong p_{mec}\]</div>
+        </section>
+      </div>
+    </div>
+    <footer class="footer">
+      <span>&copy; 2025-2026 All rights reserved.</span>
+    </footer>
+  </main>
+  <script src="../scripts/navbar-active.js"></script>
+  <script src="../scripts/documentation.js"></script>
+  <script>
+    window.MathJax = {
+      tex: {
+        inlineMath: [
+          ['\\(', '\\)'],
+          ['$', '$']
+        ],
+        displayMath: [
+          ['\\[', '\\]'],
+          ['$$', '$$']
+        ]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js" async></script>
+</body>
+
+</html>

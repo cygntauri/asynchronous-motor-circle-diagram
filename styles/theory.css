@@ -1,0 +1,357 @@
+:root {
+	--dark-blue: #07041B;
+	--blue: #110D30;
+	--gray: #8A829A;
+	--silver: #9DA1B7;
+	--gradient1: linear-gradient(to right, #2E9EF7, #BF3EFE);
+	--gradient2: linear-gradient(to right, #4BD5FB, #4187D4, #CC79FA);
+	--blue-gradient: linear-gradient(to bottom, #4D8EE3, #01D1F2);
+	--orange-gradient: linear-gradient(to bottom, #FE6247, #FFB82E);
+	--purple-gradient: linear-gradient(to right, #BF40F0, #C442A9);
+	--red-gradient: linear-gradient(to right, #F6192B, #FE6743);
+}
+
+@font-face {
+	font-family: 'Satoshi-Regular';
+	src: url(../fonts/Satoshi/Satoshi-Regular.woff2) format('woff2'), url(../fonts/Satoshi/Satoshi-Regular.woff) format('woff'), url(../fonts/Satoshi/Satoshi-Regular.ttf) format('truetype');
+	font-weight: 400;
+	font-display: fallback;
+	font-style: normal
+}
+
+@font-face {
+	font-family: 'Satoshi-Medium';
+	src: url(../fonts/Satoshi/Satoshi-Medium.woff2) format('woff2'), url(../fonts/Satoshi/Satoshi-Medium.woff) format('woff'), url(../fonts/Satoshi/Satoshi-Medium.ttf) format('truetype');
+	font-weight: 500;
+	font-display: fallback;
+	font-style: normal
+}
+
+@font-face {
+	font-family: 'Satoshi-Bold';
+	src: url(../fonts/Satoshi/Satoshi-Bold.woff2) format('woff2'), url(../fonts/Satoshi/Satoshi-Bold.woff) format('woff'), url(../fonts/Satoshi/Satoshi-Bold.ttf) format('truetype');
+	font-weight: 700;
+	font-display: fallback;
+	font-style: normal
+}
+
+@font-face {
+	font-family: 'Satoshi-Black';
+	src: url(../fonts/Satoshi/Satoshi-Black.woff2) format('woff2'), url(../fonts/Satoshi/Satoshi-Black.woff) format('woff'), url(../fonts/Satoshi/Satoshi-Black.ttf) format('truetype');
+	font-weight: 900;
+	font-display: fallback;
+	font-style: normal
+}
+
+@font-face {
+	font-family: 'ABeeZee';
+	src: url(../fonts/ABeeZee/ABeeZee-Regular.ttf) format('truetype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: fallback
+}
+
+@font-face {
+	font-family: 'ABeeZee';
+	src: url(../fonts/ABeeZee/ABeeZee-Italic.ttf) format('truetype');
+	font-weight: 400;
+	font-style: italic;
+	font-display: fallback
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #ecedf4;
+  font-family: 'ABeeZee', sans-serif;
+  width: 90%; 
+  margin: 0 auto;
+  height: 2000px;
+}
+
+.main-header {
+  position: fixed;
+  top: 20px;
+  left: 50%;                /* place le coin gauche au centre */
+  transform: translateX(-50%); /* décale de moitié sa largeur */
+  height: 80px;
+  width: 90%;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-radius: 40px;
+}
+
+
+.main-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  gap: 0;
+  padding: 0;
+}
+
+.nav-link {
+  flex: 1 1 0;
+  text-align: center;
+}
+
+.nav-link.active {
+  background: #f5f5f7;
+  border-bottom: 2px solid #F6192B;
+  border-radius: 12px 12px 0 0;
+}
+
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  color: #222;
+  font-size: 16px;
+  font-weight: 500;
+  min-width: 80px;
+  transition: color 0.2s;
+  font-family: 'Satoshi', Arial, sans-serif;
+  padding: 10.5px 20px;
+}
+
+.main-header .nav-logo {
+  height: 32px;
+  display: block;
+  position: absolute;
+  left: 20px;
+}
+
+.nav-link .nav-icon {
+  height: 32px;
+  margin: 0 0 4px 0;
+  display: block;
+}
+
+.nav-link {
+  color: var(--gray);
+}
+
+.nav-link .nav-icon,
+.nav-link span {
+  color: var(--gray);
+  filter: grayscale(1) brightness(0.6);
+  background: none;
+  background-clip: initial;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+}
+
+.nav-link.active .nav-icon,
+.nav-link.active span {
+  background: var(--red-gradient);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  color: transparent;
+  filter: none;
+}
+
+.nav-link.active {
+  border-bottom: 2px solid #F6192B;
+}
+
+.nav-link:hover .nav-icon,
+.nav-link:hover span {
+  opacity: 0.7;
+}
+
+
+/* Hero Section 
+
+.hero-section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 160px;
+}
+
+.hero-section-image{
+  text-align: center;
+}
+
+.hero-section-motor{
+  height: 320px;
+}
+
+.hero-section > div {
+  flex: 1;           
+  padding: 10px;
+}
+
+.hero-section-text h1{
+  font-size: 42px;
+  font-family: 'Satoshi-Bold';
+  color: #000;
+  line-height: 1;
+  margin: 0px;
+}
+
+.hero-section-text p{
+  line-height: 1.5;
+  margin: 25px 0px 35px 0px;
+}
+
+.hero-button-container{
+  display: inline-block;
+    text-decoration: none;
+}
+
+.hero-button {
+  display: flex;
+  flex-direction: row;
+  background: rgba(246, 25, 43, 0.8);
+  border-radius: 20px;
+  color: black;
+  transition: background 0.3s;
+  align-items: center;
+  font-family: 'Satoshi-Bold';
+  font-size: 15px;
+  padding: 10px 15px;
+}
+
+.hero-button:hover {
+  scale: 1.05;
+}
+
+.hero-button p{
+  margin: 0px;
+}
+
+.hero-button-arrow{
+  width: 20px;
+  margin-left: 6px;
+  fill: black;
+}
+*/
+
+/* Documentation */
+.documentation{
+  display: grid;
+	grid-template-columns: 25% 60%;
+	max-width: 100em;
+  box-sizing: border-box;
+  gap: 50px;
+}
+
+.text-content{
+  margin-top: 120px;
+  font-family: 'ABeeZee', sans-serif;
+  background-color: rgba(255, 255, 255, 0.705);
+  border-radius: 20px;
+  padding: 30px 50px;
+  box-shadow: 0 5px 11px rgba(0,0,0,0.05);
+}
+
+.text-content h2:not(:first-child){
+  margin: 80px 0px 40px 0px;
+}
+
+.content-nav{
+  background: var(--red-gradient);
+  color: white;
+  padding: 20px;
+	position: sticky;
+	top: 120px;
+	align-self: start;
+  border-radius: 20px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+  font-family: 'Satoshi-Medium';
+  height: 65vh;
+}
+
+.documentation .content-nav li.active > a {
+	color: white;
+	font-weight: 500;
+}
+
+.content-nav {
+  text-shadow: 0 2px 8px rgba(0,0,0,0.2);
+  padding: 30px 20px 20px 30px;
+}
+
+.content-nav a {
+	text-decoration: none;
+	display: block;
+	padding: .125rem 0;
+	color: white;
+	transition: all 50ms ease-in-out;
+} 
+
+.content-nav a:hover,
+.content-nav a:focus {
+	color: white;
+}
+
+.content-nav ul, .content-nav ul ol {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+.content-nav ol{
+  padding-left: 20px;
+}
+
+.content-nav-header{
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.content-nav-logo{
+  width: 42px;
+}
+
+.content-nav-title{
+  font-family: 'Satoshi-Medium';
+  font-size: 24px;
+}
+
+.text-content h2, .text-content h3{
+  font-family: 'Satoshi-Medium';
+}
+
+.paragraph-documentation{
+  text-align: justify;
+  line-height: 1.6;
+}
+
+
+
+
+/*Footer*/
+
+.footer {
+  background: #fff;
+  color: #a3a2a2;
+  text-align: center;
+  font-size: 15px;
+  border-radius: 20px 20px 0px 0px;
+  font-family: 'AbeeZee', Arial, sans-serif;
+  width: 98.85vw;
+  height: 50px;
+  margin-left: -5vw;
+  align-items: center;
+  padding-bottom: 20px;
+  box-shadow: 0 -6px 20px -4px rgba(0,0,0,0.10);
+  margin-top: 100px;
+}
+
+.footer span{
+  position: relative;
+  top: 50%;
+}
